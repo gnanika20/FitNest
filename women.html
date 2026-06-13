@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>FitNest</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+#productDetails{
+  display:none;
+  margin:40px;
+  padding:30px;
+  background:white;
+  border-radius:15px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+.details-container{
+  display:flex;
+  gap:40px;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.details-container img{
+  width:300px;
+  border-radius:10px;
+  box-shadow:0 10px 20px rgba(0,0,0,0.3);
+  transition:0.4s;
+}
+.details-container img:hover{
+  transform:scale(1.1) rotateY(10deg);
+}
+.product-info{ max-width:400px; text-align:left; }
+.rating{ color:gold; font-size:18px; margin:10px 0; }
+.more-details{
+  display:none;
+  margin-top:20px;
+  background:#f5f5f5;
+  padding:15px;
+  border-radius:10px;
+}
+.review{
+  margin-top:10px;
+  padding:10px;
+  background:white;
+  border-radius:8px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.2);
+}
+</style>
+</head>
+
+<body>
+<h1>
+<img src="https://static.vecteezy.com/system/resources/previews/013/156/900/non_2x/shopping-cart-logo-design-shopping-logo-design-on-line-shopping-app-icon-free-vector.jpg"
+style="width:40px;height:40px;vertical-align:middle;border-radius:5px;">
+FitNest - Women Collection
+</h1>
+
+<nav>
+<a href="index.html">Home</a> |
+<a href="men.html">Men</a> |
+<a href="women.html">Women</a> |
+<a href="kids.html">Kids</a> |
+<a href="accessories.html">Accessories</a> |
+<a href="profile.html">Profile</a> |
+<a href="cart.html">Cart</a> |
+</nav>
+
+<h2>Women Products</h2>
+
+<div class="products">
+  <div class="product-card">
+    <img src="https://i.pinimg.com/originals/1b/92/c0/1b92c060ab11e940ba2698c7ab8f5d9e.jpg">
+    <h3>Saree</h3>
+    <p class="price">₹399</p>
+    <button onclick="showProduct('Traditional Saree','₹399','https://i.pinimg.com/originals/1b/92/c0/1b92c060ab11e940ba2698c7ab8f5d9e.jpg')">View Product</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://m.media-amazon.com/images/I/71akg37h8tL._AC_UY1000_.jpg">
+    <h3>Dresses</h3>
+    <p class="price">₹799</p>
+    <button onclick="showProduct('Stylish Dress','₹799','https://m.media-amazon.com/images/I/71akg37h8tL._AC_UY1000_.jpg')">View Product</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://i.etsystatic.com/38391019/r/il/56492a/4620462323/il_1080xN.4620462323_9bds.jpg">
+    <h3>Kurta Set</h3>
+    <p class="price">₹1299</p>
+    <button onclick="showProduct('Kurta Set','₹1299','https://i.etsystatic.com/38391019/r/il/56492a/4620462323/il_1080xN.4620462323_9bds.jpg')">View Product</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://www.brandedgirls.com/wp-content/uploads/2016/12/Kyseria-Blue-style-Kurti.jpg">
+    <h3>Kurti</h3>
+    <p class="price">₹200</p>
+    <button onclick="showProduct('Casual Kurti','₹200','https://www.brandedgirls.com/wp-content/uploads/2016/12/Kyseria-Blue-style-Kurti.jpg')">View Product</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://lsco.scene7.com/is/image/lsco/A34940013-dynamic1-pdp?fmt=jpeg&qlt=70&resMode=sharp2&fit=crop,1&wid=2000&hei=2500">
+    <h3>Jeans</h3>
+    <p class="price">₹399</p>
+    <button onclick="showProduct('Women Jeans','₹399','https://lsco.scene7.com/is/image/lsco/A34940013-dynamic1-pdp?fmt=jpeg&qlt=70&resMode=sharp2&fit=crop,1&wid=2000&hei=2500')">View Product</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://target.scene7.com/is/image/Target/GUEST_080e7d0e-179d-4650-b7c3-a81ce24189ec">
+    <h3>Tops</h3>
+    <p class="price">₹199</p>
+    <button onclick="showProduct('Fashion Top','₹199','https://target.scene7.com/is/image/Target/GUEST_080e7d0e-179d-4650-b7c3-a81ce24189ec')">View Product</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://i5.walmartimages.com/asr/c9557e7a-ffc5-46cf-bfbe-b19be5caedfa.77fed57bdbbe4706b9f73e167c68fc64.jpeg">
+    <h3>Skirts</h3>
+    <p class="price">₹499</p>
+    <button onclick="showProduct('Stylish Skirt','₹499','https://i5.walmartimages.com/asr/c9557e7a-ffc5-46cf-bfbe-b19be5caedfa.77fed57bdbbe4706b9f73e167c68fc64.jpeg')">View Product</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://extremehobby.com/img/cms/koszulki-sportowe-damskie.jpg">
+    <h3>Sports Wear</h3>
+    <p class="price">₹599</p>
+    <button onclick="showProduct('Sports Wear','₹599','https://extremehobby.com/img/cms/koszulki-sportowe-damskie.jpg')">View Product</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://goingallin.co/cdn/shop/files/DSCF3580.jpg?v=1706616876&width=1000">
+    <h3>Gym Wear</h3>
+    <p class="price">₹299</p>
+    <button onclick="showProduct('Gym Wear','₹299','https://goingallin.co/cdn/shop/files/DSCF3580.jpg?v=1706616876&width=1000')">View Product</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://cpimg.tistatic.com/07108553/b/4/Ladies-Casual-Printed-Night-Dress.jpg">
+    <h3>Night Wear</h3>
+    <p class="price">₹999</p>
+    <button onclick="showProduct('Night Wear','₹999','https://cpimg.tistatic.com/07108553/b/4/Ladies-Casual-Printed-Night-Dress.jpg')">View Product</button>
+  </div>
+</div>
+
+<!-- Product details popup -->
+<div id="productDetails">
+  <div class="details-container">
+    <img id="detailImg">
+    <div class="product-info">
+      <h2 id="detailName"></h2>
+      <p id="detailPrice"></p>
+      <p>High quality stylish product perfect for daily wear and comfort.</p>
+      <div class="rating">⭐⭐⭐⭐☆ 4.5 Rating</div>
+
+      <!-- Add to Cart wired -->
+      <button onclick="addToCart(
+        document.getElementById('detailName').innerText,
+        document.getElementById('detailPrice').innerText.replace('Price: ',''),
+        document.getElementById('detailImg').src
+      )">Add to Cart</button>
+
+            <button onclick="location.href='cart.html'">Buy Now</button>
+      <button onclick="showMore()">View More Details</button>
+
+      <div class="more-details" id="moreInfo">
+        <h3>Product Details</h3>
+        <p><b>Material:</b> Pattu/Cotton/Denim</p>
+        <p><b>Sizes:</b> S, M, L, XL</p>
+        <p><b>Colors:</b> Black, Blue, White</p>
+        <p><b>Delivery:</b> 3-5 Days</p>
+
+        <h3>Customer Reviews</h3>
+        <div class="review">⭐️⭐️⭐️⭐️⭐️ Beautiful product and comfortable.</div>
+        <div class="review">⭐️⭐️⭐️⭐️ Very stylish design.</div>
+        <div class="review">⭐️⭐️⭐️⭐️ Good quality for the price.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function showProduct(name,price,img){
+  document.getElementById("productDetails").style.display="block";
+  document.getElementById("detailName").innerText=name;
+  document.getElementById("detailPrice").innerText="Price: "+price;
+  document.getElementById("detailImg").src=img;
+  document.getElementById("moreInfo").style.display="none";
+  window.scrollTo(0,document.body.scrollHeight);
+}
+function showMore(){
+  document.getElementById("moreInfo").style.display="block";
+}
+
+// Cart logic
+function addToCart(name, price, img){
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.push({name, price: parseInt(price.replace("₹","")), img, qty:1});
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert(name + " added to cart!");
+}
+</script>
+</body>
+</html>

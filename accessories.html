@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>FitNest</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+#productDetails{
+  display:none;
+  margin:40px;
+  padding:30px;
+  background:white;
+  border-radius:15px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+.details-container{
+  display:flex;
+  gap:40px;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.details-container img{
+  width:300px;
+  border-radius:10px;
+  box-shadow:0 10px 20px rgba(0,0,0,0.3);
+  transition:0.4s;
+}
+.details-container img:hover{
+  transform:scale(1.1) rotateY(10deg);
+}
+.product-info{ max-width:400px; text-align:left; }
+.rating{ color:gold; font-size:18px; margin:10px 0; }
+.more-details{
+  display:none;
+  margin-top:20px;
+  background:#f5f5f5;
+  padding:15px;
+  border-radius:10px;
+}
+.review{
+  margin-top:10px;
+  padding:10px;
+  background:white;
+  border-radius:8px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.2);
+}
+</style>
+</head>
+
+<body>
+<h1>
+<img src="https://static.vecteezy.com/system/resources/previews/013/156/900/non_2x/shopping-cart-logo-design-shopping-logo-design-on-line-shopping-app-icon-free-vector.jpg"
+style="width:40px;height:40px;vertical-align:middle;border-radius:5px;">
+FitNest - Accessories Collection
+</h1>
+
+<nav>
+<a href="index.html">Home</a> |
+<a href="men.html">Men</a> |
+<a href="women.html">Women</a> |
+<a href="kids.html">Kids</a> |
+<a href="accessories.html">Accessories</a> |
+<a href="profile.html">Profile</a> |
+<a href="cart.html">Cart</a> |
+</nav>
+
+<h2>Accessories Products</h2>
+
+<div class="products">
+  <div class="product-card">
+    <img src="https://m.media-amazon.com/images/I/811bLllCSwL._AC_UY1000_.jpg">
+    <h3>Watch</h3>
+    <p class="price">₹1299</p>
+    <button onclick="showProduct('Watch','₹1299','https://m.media-amazon.com/images/I/811bLllCSwL._AC_UY1000_.jpg')">View Product</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://images.meesho.com/images/products/467443763/dkc3h_512.webp?width=512">
+    <h3>Bags</h3>
+    <p class="price">₹599</p>
+    <button onclick="showProduct('Fashion Bag','₹599','https://images.meesho.com/images/products/467443763/dkc3h_512.webp?width=512')">View Product</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://rubans.in/cdn/shop/files/rubans-minimalist-gold-toned-necklace-set-with-dainty-white-beads-jewellery-sets-34589732077742.jpg">
+    <h3>Necklace Set</h3>
+    <p class="price">₹499</p>
+    <button onclick="showProduct('Necklace Set','₹499','https://rubans.in/cdn/shop/files/rubans-minimalist-gold-toned-necklace-set-with-dainty-white-beads-jewellery-sets-34589732077742.jpg')">View Product</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://m.media-amazon.com/images/I/71fnvC6uSgL._SL1500_.jpg">
+    <h3>Belt</h3>
+    <p class="price">₹199</p>
+    <button onclick="showProduct('Belt','₹199','https://m.media-amazon.com/images/I/71fnvC6uSgL._SL1500_.jpg')">View Product</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://assets.myntassets.com/h_1440,q_75,w_1080/v1/assets/images/16905012/2025/5/24/04020bd5-a154-4454-9dbc-0e240f3eb03b1748094600530-Voyage-Unisex-Black-Lens--Silver-Toned-Round-Sunglasses-with-1.jpg">
+    <h3>Sunglasses</h3>
+    <p class="price">₹299</p>
+    <button onclick="showProduct('Sunglasses','₹299','https://assets.myntassets.com/h_1440,q_75,w_1080/v1/assets/images/16905012/2025/5/24/04020bd5-a154-4454-9dbc-0e240f3eb03b1748094600530-Voyage-Unisex-Black-Lens--Silver-Toned-Round-Sunglasses-with-1.jpg')">View Product</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://m.media-amazon.com/images/I/81xPV-j9PCL._AC_UY1100_.jpg">
+    <h3>Hats</h3>
+    <p class="price">₹300</p>
+    <button onclick="showProduct('Hat','₹300','https://m.media-amazon.com/images/I/81xPV-j9PCL._AC_UY1100_.jpg')">View Product</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://i.etsystatic.com/53704205/r/il/e5b8ec/6385564709/il_fullxfull.6385564709_s6q7.jpg">
+    <h3>Bracelet</h3>
+    <p class="price">₹499</p>
+    <button onclick="showProduct('Bracelet','₹499','https://i.etsystatic.com/53704205/r/il/e5b8ec/6385564709/il_fullxfull.6385564709_s6q7.jpg')">View Product</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://m.media-amazon.com/images/I/71Y7P9+MDeL._AC_UF350,350_QL80_.jpg">
+    <h3>Hair Pins</h3>
+    <p class="price">₹99</p>
+    <button onclick="showProduct('Hair Pins','₹99','https://m.media-amazon.com/images/I/71Y7P9+MDeL._AC_UF350,350_QL80_.jpg')">View Product</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://imagescdn.jaypore.com/img/app/product/3/39724949-15038688.jpg?w=500">
+    <h3>Earrings</h3>
+    <p class="price">₹299</p>
+    <button onclick="showProduct('Earrings','₹299','https://imagescdn.jaypore.com/img/app/product/3/39724949-15038688.jpg?w=500')">View Product</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://i.pinimg.com/originals/9f/18/04/9f1804400f63c5758a84613001003cf4.jpg">
+    <h3>Rings</h3>
+    <p class="price">₹999</p>
+    <button onclick="showProduct('Rings','₹999','https://i.pinimg.com/originals/9f/18/04/9f1804400f63c5758a84613001003cf4.jpg')">View Product</button>
+  </div>
+</div>
+
+<!-- Product details popup -->
+<div id="productDetails">
+  <div class="details-container">
+    <img id="detailImg">
+    <div class="product-info">
+      <h2 id="detailName"></h2>
+      <p id="detailPrice"></p>
+      <p>Premium quality accessories to complete your fashion style.</p>
+      <div class="rating">⭐⭐⭐⭐☆ 4.5 Rating</div>
+
+      <!-- Add to Cart wired -->
+      <button onclick="addToCart(
+        document.getElementById('detailName').innerText,
+        document.getElementById('detailPrice').innerText.replace('Price: ',''),
+        document.getElementById('detailImg').src
+      )">Add to Cart</button>
+
+            <button onclick="location.href='cart.html'">Buy Now</button>
+      <button onclick="showMore()">View More Details</button>
+
+      <div class="more-details" id="moreInfo">
+        <h3>Product Details</h3>
+        <p><b>Material:</b> Premium Quality</p>
+        <p><b>Style:</b> Fashion Trend</p>
+        <p><b>Delivery:</b> 3-5 Days</p>
+
+        <h3>Customer Reviews</h3>
+        <div class="review">⭐️⭐️⭐️⭐️⭐️ Loved this product!</div>
+        <div class="review">⭐️⭐️⭐️⭐️ Very stylish accessory.</div>
+        <div class="review">⭐️⭐️⭐️⭐️ Good value for money.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function showProduct(name,price,img){
+  document.getElementById("productDetails").style.display="block";
+  document.getElementById("detailName").innerText=name;
+  document.getElementById("detailPrice").innerText="Price: "+price;
+  document.getElementById("detailImg").src=img;
+  document.getElementById("moreInfo").style.display="none";
+  window.scrollTo(0,document.body.scrollHeight);
+}
+function showMore(){
+  document.getElementById("moreInfo").style.display="block";
+}
+
+// Cart logic
+function addToCart(name, price, img){
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.push({name, price: parseInt(price.replace("₹","")), img, qty:1});
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert(name + " added to cart!");
+}
+</script>
+</body>
+</html>

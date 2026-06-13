@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>FitNest</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+#productDetails{
+  display:none;
+  margin:40px;
+  padding:30px;
+  background:white;
+  border-radius:15px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+.details-container{
+  display:flex;
+  gap:40px;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.details-container img{
+  width:300px;
+  border-radius:10px;
+  box-shadow:0 10px 20px rgba(0,0,0,0.3);
+  transition:0.4s;
+}
+.details-container img:hover{
+  transform:scale(1.1) rotateY(10deg);
+}
+.product-info{ max-width:400px; text-align:left; }
+.rating{ color:gold; font-size:18px; margin:10px 0; }
+.more-details{
+  display:none;
+  margin-top:20px;
+  background:#f5f5f5;
+  padding:15px;
+  border-radius:10px;
+}
+.review{
+  margin-top:10px;
+  padding:10px;
+  background:white;
+  border-radius:8px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.2);
+}
+</style>
+</head>
+
+<body>
+<h1>
+<img src="https://static.vecteezy.com/system/resources/previews/013/156/900/non_2x/shopping-cart-logo-design-shopping-logo-design-on-line-shopping-app-icon-free-vector.jpg"
+style="width:40px;height:40px;vertical-align:middle;border-radius:5px;">
+FitNest - Men Collection
+</h1>
+
+<nav>
+<a href="index.html">Home</a> |
+<a href="men.html">Men</a> |
+<a href="women.html">Women</a> |
+<a href="kids.html">Kids</a> |
+<a href="accessories.html">Accessories</a> |
+<a href="profile.html">Profile</a> |
+<a href="cart.html">Cart</a> |
+</nav>
+
+<h2>Men Products</h2>
+
+<div class="products">
+  <div class="product-card">
+    <img src="https://tse1.mm.bing.net/th/id/OIP.fxMGhnDZBEoMESUGa1-BCwAAAA?rs=1&pid=ImgDetMain&o=7&rm=3">
+    <h3>Shirt</h3>
+    <p class="price">₹499</p>
+    <button onclick="showProduct('Stylish Cotton Shirt','₹499','https://tse1.mm.bing.net/th/id/OIP.fxMGhnDZBEoMESUGa1-BCwAAAA?rs=1&pid=ImgDetMain&o=7&rm=3')">View Product</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://tse3.mm.bing.net/th/id/OIP.NC-0MagQRU_RznTVOWIPXAHaHa?rs=1&pid=ImgDetMain&o=7&rm=3">
+    <h3>Jeans</h3>
+    <p class="price">₹899</p>
+    <button onclick="showProduct('Slim Fit Jeans','₹899','https://tse3.mm.bing.net/th/id/OIP.NC-0MagQRU_RznTVOWIPXAHaHa?rs=1&pid=ImgDetMain&o=7&rm=3')">View Product</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://i.pinimg.com/originals/fe/92/c5/fe92c5fa43b1e34a9cda3584f7dd0d41.png">
+    <h3>Suit</h3>
+    <p class="price">₹1299</p>
+    <button onclick="showProduct('Formal Suit','₹1299','https://i.pinimg.com/originals/fe/92/c5/fe92c5fa43b1e34a9cda3584f7dd0d41.png')">View Product</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://tse2.mm.bing.net/th/id/OIP.-P1BcJxMtnWzxMroJ6hVogHaHa?rs=1&pid=ImgDetMain&o=7&rm=3">
+    <h3>T-Shirt</h3>
+    <p class="price">₹399</p>
+    <button onclick="showProduct('Casual T-Shirt','₹399','https://tse2.mm.bing.net/th/id/OIP.-P1BcJxMtnWzxMroJ6hVogHaHa?rs=1&pid=ImgDetMain&o=7&rm=3')">View Product</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://i.pinimg.com/736x/87/71/7e/87717e76c52d21f7f77e6d723d882d26.jpg">
+    <h3>Kurta</h3>
+    <p class="price">₹699</p>
+    <button onclick="showProduct('Traditional Kurta','₹699','https://i.pinimg.com/736x/87/71/7e/87717e76c52d21f7f77e6d723d882d26.jpg')">View Product</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://www.moderngentlemanmagazine.com/wp-content/uploads/2024/11/Urban-Samurai-650x900.jpg">
+    <h3>SportWear</h3>
+    <p class="price">₹999</p>
+    <button onclick="showProduct('Sport Wear','₹999','https://www.moderngentlemanmagazine.com/wp-content/uploads/2024/11/Urban-Samurai-650x900.jpg')">View Product</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://i.pinimg.com/736x/18/78/20/187820d46b3a128a48e137f49a7cd889.jpg">
+    <h3>Trouser</h3>
+    <p class="price">₹499</p>
+    <button onclick="showProduct('Formal Trouser','₹499','https://i.pinimg.com/736x/18/78/20/187820d46b3a128a48e137f49a7cd889.jpg')">View Product</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://i5.walmartimages.com/seo/Men-s-Fur-Collar-Jacket-Fur-Collar-Patchwork-Jacket-Coat-Lambskin-Lining-Leather-Jacket-Suede-Lambskin-Faux-Fur-Leather-Coat_1f827337-9d1f-44b7-9cb4-e483b2180987.d039edeb99bc2ee31066fd05e66c0964.jpeg">
+    <h3>Jacket</h3>
+    <p class="price">₹599</p>
+    <button onclick="showProduct('Winter Jacket','₹599','https://i5.walmartimages.com/seo/Men-s-Fur-Collar-Jacket-Fur-Collar-Patchwork-Jacket-Coat-Lambskin-Lining-Leather-Jacket-Suede-Lambskin-Faux-Fur-Leather-Coat_1f827337-9d1f-44b7-9cb4-e483b2180987.d039edeb99bc2ee31066fd05e66c0964.jpeg')">View Product</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://tse1.mm.bing.net/th/id/OIP.02Y_3d0D57sYY4I049HivQHaIj?rs=1&pid=ImgDetMain&o=7&rm=3">
+    <h3>Gym Wear</h3>
+    <p class="price">₹2099</p>
+    <button onclick="showProduct('Gym Wear','₹2099','https://tse1.mm.bing.net/th/id/OIP.02Y_3d0D57sYY4I049HivQHaIj?rs=1&pid=ImgDetMain&o=7&rm=3')">View Product</button>
+  </div>
+    <div class="product-card">
+    <img src="https://5.imimg.com/data5/ECOM/Default/2022/11/NI/LM/LV/158123304/1649563730792-n-mens-04-2-originnm80prcnt-500x500.jpg">
+    <h3>Night Wear</h3>
+    <p class="price">₹999</p>
+    <button onclick="showProduct('Night Wear','₹999','https://5.imimg.com/data5/ECOM/Default/2022/11/NI/LM/LV/158123304/1649563730792-n-mens-04-2-originnm80prcnt-500x500.jpg')">View Product</button>
+  </div>
+</div> <!-- end of products -->
+
+<!-- Product details popup -->
+<div id="productDetails">
+  <div class="details-container">
+    <img id="detailImg">
+    <div class="product-info">
+      <h2 id="detailName"></h2>
+      <p id="detailPrice"></p>
+      <p>High quality stylish product perfect for daily wear and comfort.</p>
+      <div class="rating">⭐⭐⭐⭐☆ 4.5 Rating</div>
+
+      <!-- Add to Cart button wired to localStorage -->
+      <button onclick="addToCart(
+        document.getElementById('detailName').innerText,
+        document.getElementById('detailPrice').innerText.replace('Price: ',''),
+        document.getElementById('detailImg').src
+      )">Add to Cart</button>
+
+      <button onclick="location.href='cart.html'">Buy Now</button>
+      <button onclick="showMore()">View More Details</button>
+
+      <div class="more-details" id="moreInfo">
+        <h3>Product Details</h3>
+        <p><b>Material:</b> Cotton / Denim</p>
+        <p><b>Sizes:</b> S, M, L, XL</p>
+        <p><b>Colors:</b> Black, Blue, White</p>
+        <p><b>Delivery:</b> 3-5 Days</p>
+
+        <h3>Customer Reviews</h3>
+        <div class="review">⭐️⭐️⭐️⭐️⭐️ Excellent quality product.</div>
+        <div class="review">⭐️⭐️⭐️⭐️ Very comfortable and stylish.</div>
+        <div class="review">⭐️⭐️⭐️⭐️ Good fabric and worth the price.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function showProduct(name,price,img){
+  document.getElementById("productDetails").style.display="block";
+  document.getElementById("detailName").innerText=name;
+  document.getElementById("detailPrice").innerText="Price: "+price;
+  document.getElementById("detailImg").src=img;
+  document.getElementById("moreInfo").style.display="none";
+  window.scrollTo(0,document.body.scrollHeight);
+}
+function showMore(){
+  document.getElementById("moreInfo").style.display="block";
+}
+
+// Cart logic
+function addToCart(name, price, img){
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.push({name, price: parseInt(price.replace("₹","")), img, qty:1});
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert(name + " added to cart!");
+}
+</script>
+</body>
+</html>

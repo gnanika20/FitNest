@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>FitNest</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+#productDetails{
+  display:none;
+  margin:40px;
+  padding:30px;
+  background:white;
+  border-radius:15px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+.details-container{
+  display:flex;
+  gap:40px;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.details-container img{
+  width:300px;
+  border-radius:10px;
+  box-shadow:0 10px 20px rgba(0,0,0,0.3);
+  transition:0.4s;
+}
+.details-container img:hover{
+  transform:scale(1.1) rotateY(10deg);
+}
+.product-info{ max-width:400px; text-align:left; }
+.rating{ color:gold; font-size:18px; margin:10px 0; }
+.more-details{
+  display:none;
+  margin-top:20px;
+  background:#f5f5f5;
+  padding:15px;
+  border-radius:10px;
+}
+.review{
+  margin-top:10px;
+  padding:10px;
+  background:white;
+  border-radius:8px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.2);
+}
+</style>
+</head>
+
+<body>
+<h1>
+<img src="https://static.vecteezy.com/system/resources/previews/013/156/900/non_2x/shopping-cart-logo-design-shopping-logo-design-on-line-shopping-app-icon-free-vector.jpg"
+style="width:40px;height:40px;vertical-align:middle;border-radius:5px;">
+FitNest - Kids Collection
+</h1>
+
+<nav>
+<a href="index.html">Home</a> |
+<a href="men.html">Men</a> |
+<a href="women.html">Women</a> |
+<a href="kids.html">Kids</a> |
+<a href="accessories.html">Accessories</a> |
+<a href="profile.html">Profile</a> |
+<a href="cart.html">Cart</a> |
+</nav>
+
+<h2>Kids Products</h2>
+
+<div class="products">
+  <div class="product-card">
+    <img src="https://www.nameit.com/dw/image/v2/BDTC_PRD/on/demandware.static/-/Sites-pim-catalog/default/dw018423b2/pim-static/NI/13248484/13248484_MediumBlueDenim_008.jpg">
+    <h3>Jeans</h3>
+    <p class="price">₹599</p>
+    <button onclick="showProduct('Kids Jeans','₹599','https://www.nameit.com/dw/image/v2/BDTC_PRD/on/demandware.static/-/Sites-pim-catalog/default/dw018423b2/pim-static/NI/13248484/13248484_MediumBlueDenim_008.jpg')">View Product</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://www.royalexport.in/product-img/special-girls-wear-sequence-em-1710488523.jpg">
+    <h3>Dress</h3>
+    <p class="price">₹399</p>
+    <button onclick="showProduct('Kids Dress','₹399','https://www.royalexport.in/product-img/special-girls-wear-sequence-em-1710488523.jpg')">View Product</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://www.momshome.in/cdn/shop/files/1_1bd4d01b-7eb7-428a-8812-a6169618d969.jpg">
+    <h3>Shorts</h3>
+    <p class="price">₹499</p>
+    <button onclick="showProduct('Kids Shorts','₹499','https://www.momshome.in/cdn/shop/files/1_1bd4d01b-7eb7-428a-8812-a6169618d969.jpg')">View Product</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://assets.myntassets.com/dpr_1.5,q_30,w_400,c_limit,fl_progressive/assets/images/2025/NOVEMBER/5/vZQgFq32_1a9fdd0b77eb4967b4dc5925558db59a.jpg">
+    <h3>Night Wear</h3>
+    <p class="price">₹600</p>
+    <button onclick="showProduct('Kids Night Wear','₹600','https://assets.myntassets.com/dpr_1.5,q_30,w_400,c_limit,fl_progressive/assets/images/2025/NOVEMBER/5/vZQgFq32_1a9fdd0b77eb4967b4dc5925558db59a.jpg')">View Product</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://cdn-1.azazie.com/upimg/s360/20/23/ab9a3e4c59de008f501c035d6f372023.jpg">
+    <h3>Suits</h3>
+    <p class="price">₹1299</p>
+    <button onclick="showProduct('Kids Suit','₹1299','https://cdn-1.azazie.com/upimg/s360/20/23/ab9a3e4c59de008f501c035d6f372023.jpg')">View Product</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://m.media-amazon.com/images/I/61d5JqN5xmL._AC_UY1100_.jpg">
+    <h3>Long Frock</h3>
+    <p class="price">₹999</p>
+    <button onclick="showProduct('Long Frock','₹999','https://m.media-amazon.com/images/I/61d5JqN5xmL._AC_UY1100_.jpg')">View Product</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://kuchipoo.in/cdn/shop/files/KUC-SWT-393FRONT_bf0f2ed8-5a82-4658-9fd2-44caef89189c.jpg">
+    <h3>Sweaters</h3>
+    <p class="price">₹499</p>
+    <button onclick="showProduct('Kids Sweater','₹499','https://kuchipoo.in/cdn/shop/files/KUC-SWT-393FRONT_bf0f2ed8-5a82-4658-9fd2-44caef89189c.jpg')">View Product</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://m.media-amazon.com/images/I/617tCg0euFL._AC_UY1100_.jpg">
+    <h3>Jackets</h3>
+    <p class="price">₹599</p>
+    <button onclick="showProduct('Kids Jacket','₹599','https://m.media-amazon.com/images/I/617tCg0euFL._AC_UY1100_.jpg')">View Product</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://thehaelli.com/cdn/shop/files/THK003-3-PandaKidsCo-ordSet.jpg">
+    <h3>Co-ords</h3>
+    <p class="price">₹299</p>
+    <button onclick="showProduct('Kids Co-ords','₹299','https://thehaelli.com/cdn/shop/files/THK003-3-PandaKidsCo-ordSet.jpg')">View Product</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://www.mumkins.in/cdn/shop/collections/Lehengas_Shararas.jpg">
+    <h3>Party Wear</h3>
+    <p class="price">₹999</p>
+    <button onclick="showProduct('Kids Party Wear','₹999','https://www.mumkins.in/cdn/shop/collections/Lehengas_Shararas.jpg')">View Product</button>
+  </div>
+</div>
+
+<!-- Product details popup -->
+<div id="productDetails">
+  <div class="details-container">
+    <img id="detailImg">
+    <div class="product-info">
+      <h2 id="detailName"></h2>
+      <p id="detailPrice"></p>
+      <p>Comfortable and stylish clothing perfect for kids daily wear.</p>
+      <div class="rating">⭐⭐⭐⭐☆ 4.5 Rating</div>
+
+      <!-- Add to Cart wired -->
+            <!-- Add to Cart wired -->
+      <button onclick="addToCart(
+        document.getElementById('detailName').innerText,
+        document.getElementById('detailPrice').innerText.replace('Price: ',''),
+        document.getElementById('detailImg').src
+      )">Add to Cart</button>
+
+      <button onclick="location.href='cart.html'">Buy Now</button>
+      <button onclick="showMore()">View More Details</button>
+
+      <div class="more-details" id="moreInfo">
+        <h3>Product Details</h3>
+        <p><b>Material:</b> Cotton</p>
+        <p><b>Sizes:</b> XS, S, M</p>
+        <p><b>Colors:</b> Multiple Colors</p>
+        <p><b>Delivery:</b> 3-5 Days</p>
+
+        <h3>Customer Reviews</h3>
+        <div class="review">⭐️⭐️⭐️⭐️⭐️ My kid loved it!</div>
+        <div class="review">⭐️⭐️⭐️⭐️ Good quality.</div>
+        <div class="review">⭐️⭐️⭐️⭐️ Nice design.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function showProduct(name,price,img){
+  document.getElementById("productDetails").style.display="block";
+  document.getElementById("detailName").innerText=name;
+  document.getElementById("detailPrice").innerText="Price: "+price;
+  document.getElementById("detailImg").src=img;
+  document.getElementById("moreInfo").style.display="none";
+  window.scrollTo(0,document.body.scrollHeight);
+}
+function showMore(){
+  document.getElementById("moreInfo").style.display="block";
+}
+
+// Cart logic
+function addToCart(name, price, img){
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.push({name, price: parseInt(price.replace("₹","")), img, qty:1});
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert(name + " added to cart!");
+}
+</script>
+</body>
+</html>
