@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>FitNest</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* Container styling */
+.profile-container {
+  max-width: 2000px;
+  margin: 20px auto;
+  width:1000px;
+  height: 500px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 2px 2px 12px #aaa;
+  background-color: #f9f9f9;
+}
+
+/* Dashboard layout */
+.dashboard {
+  display: flex;
+  gap: 35px;
+}
+
+.sidebar {
+  width: 200px;
+  background: #f1f1f1;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.sidebar button {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 20px;
+  border: none;
+  background: #131313;
+  cursor: pointer;
+  color: white;
+}
+
+.sidebar button:hover {
+  background: #f10f0f;
+}
+
+.content {
+  flex: 1;
+  padding: 50px;
+  border: 2px solid #ccc;
+  border-radius: 1px;
+}
+
+.section {
+  display: block;
+}
+
+.profile-container h2 {
+  text-align: center;
+}
+
+input, button {
+  width: 20%;
+  padding: 8px;
+  margin: 5px 0;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4CAF50;
+  color: rgb(251, 248, 248);
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+#error {
+  color: red;
+  font-size: 0.9em;
+  margin: 5px 0;
+}
+
+#profileDetails {
+  display: none;
+}
+</style>
+</head>
+
+<body>
+
+<h1>FitNest</h1>
+
+<nav>
+<a href="index.html">Home</a> |
+<a href="men.html">Men</a> |
+<a href="women.html">Women</a> |
+<a href="kids.html">Kids</a> |
+<a href="accessories.html">Accessories</a> |
+<a href="profile.html">Profile</a> |
+<a href="cart.html">Cart</a> |
+</nav>
+
+<div class="profile-container">
+
+<!-- LOGIN FORM -->
+<form id="loginForm">
+<h2>Login</h2>
+<label>Email:</label>
+<input type="email" id="loginEmail" placeholder="Enter your email" required>
+<br><label>Pass:</label>
+<input type="password" id="loginPassword" placeholder="Enter password" required><br><br>
+<button type="submit">Login</button>
+<p style="margin-top:15px;">New user? <a href="#" onclick="showSignup()">Sign Up</a></p>
+<div id="loginError" style="color:red;"></div>
+</form>
+
+<!-- SIGNUP FORM -->
+<form id="signupForm" style="display:none;">
+<h2>Sign Up</h2>
+<label>Name :</label>
+<input type="text" id="signupName" placeholder="Enter name" required><br><br>
+<label>Email:</label>
+<input type="email" id="signupEmail" placeholder="Enter your email" required><br><br>
+<label>Pass :</label>
+<input type="password" id="signupPassword" placeholder="Create password" required><br><br>
+<label>Phone:</label>
+<input type="tel" id="signupPhone" placeholder="Phone number" required ><br><br>
+<button type="submit">Register</button>
+<p style="margin-top:15px;">Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+<div id="signupError" style="color:red;"></div>
+</form>
+
+<!-- PROFILE DETAILS -->
+<div id="profileDetails" style="display:none;">
+<div class="dashboard">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <h3>My Account</h3>
+    <button onclick="showSection('info')">Profile Info</button>
+    <button onclick="showSection('orders')">Orders</button>
+    <button onclick="showSection('address')">Addresses</button>
+    <button onclick="showSection('subscription')">Subscriptions</button>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <!-- CONTENT AREA -->
+  <div class="content">
+
+    <!-- PROFILE INFO -->
+    <div id="info" class="section">
+      <h2>Profile Info</h2>
+      <img id="profilePic" src="https://via.placeholder.com/100"
+           style="border-radius:50%; width:100px;"><br><br>
+      <input type="file" onchange="uploadImage(event)"><br><br>
+      <button type="button" onclick="removeProfilePic()">Remove Picture</button><br><br>
+      <p><strong>Name:</strong> <span id="profileName"></span></p>
+      <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+      <p><strong>Phone:</strong> <span id="profilePhone"></span></p>
+    </div>
+
+    <!-- ORDERS -->
+    <div id="orders" class="section" style="display:none;">
+      <h2>My Orders</h2>
+      <p><strong>Total Orders:</strong> <span id="orderCount">0</span></p>
+      <ul id="ordersList"></ul>
+    </div>
+
+    <!-- ADDRESSES -->
+    <div id="address" class="section" style="display:none;">
+      <h2>Saved Addresses</h2>
+      <input type="text" id="addressInput" placeholder="Enter address">
+      <button onclick="addAddress()">Add</button>
+      <ul id="addressList"></ul>
+    </div>
+
+    <!-- SUBSCRIPTIONS -->
+    <div id="subscription" class="section" style="display:none;">
+      <h2>Subscriptions</h2>
+      <button onclick="subscribe()">Subscribe</button>
+      <button onclick="unsubscribe()">Unsubscribe</button>
+      <p id="subscriptionStatus">Not Subscribed</p>
+    </div>
+
+  </div>
+</div>
+</div>
+</div>
+
+<script>
+// Show/hide forms
+function showSignup(){
+  document.getElementById("loginForm").style.display="none";
+  document.getElementById("signupForm").style.display="block";
+  document.getElementById("loginError").textContent = "";
+}
+function showLogin(){
+  document.getElementById("signupForm").style.display="none";
+  document.getElementById("loginForm").style.display="block";
+  document.getElementById("signupError").textContent = "";
+}
+
+// Strict email regex
+const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.(com|net|org|edu|gov|co|in)$/i;
+
+// Signup validation and storage
+document.getElementById("signupForm").addEventListener("submit", function(event){
+  event.preventDefault();
+  const name = document.getElementById("signupName").value.trim();
+  const email = document.getElementById("signupEmail").value.trim();
+  const password = document.getElementById("signupPassword").value.trim();
+  const phone = document.getElementById("signupPhone").value.trim();
+
+  if(!emailPattern.test(email)){
+    document.getElementById("signupError").textContent = "Enter a valid email like abc@gmail.com";
+    return;
+  }
+  localStorage.setItem("userName", name);
+  localStorage.setItem("userEmail", email);
+  localStorage.setItem("userPassword", password);
+  localStorage.setItem("userPhone", phone);
+  localStorage.setItem("loggedInUser", email);
+  document.getElementById("signupError").textContent = "";
+  showProfile();
+});
+
+// Login validation
+document.getElementById("loginForm").addEventListener("submit", function(event){
+  event.preventDefault();
+  const email = document.getElementById("loginEmail").value.trim();
+  const password = document.getElementById("loginPassword").value.trim();
+  const storedEmail = localStorage.getItem("userEmail");
+  const storedPassword = localStorage.getItem("userPassword");
+
+  if(emailPattern.test(email) === false){
+    document.getElementById("loginError").textContent = "Enter a valid email like abc@gmail.com";
+    return;
+  }
+  if(email === storedEmail && password === storedPassword){
+    localStorage.setItem("loggedInUser", email); 
+    document.getElementById("loginError").textContent = "";
+    showProfile();
+  } else {
+    document.getElementById("loginError").textContent = "Invalid email or password!";
+  }
+});
+
+// Show profile details
+// Show profile details
+function showProfile() {
+  const loggedInEmail = localStorage.getItem("loggedInUser");
+  if(!loggedInEmail) return; // no one is logged in
+
+  // Load user data
+  const name = localStorage.getItem("userName");
+  const phone = localStorage.getItem("userPhone");
+  const pic = localStorage.getItem("profilePic");
+  const sub = localStorage.getItem("subscribed");
+
+  document.getElementById("profileName").textContent = name;
+  document.getElementById("profileEmail").textContent = loggedInEmail;
+  document.getElementById("profilePhone").textContent = phone;
+
+  if(pic){
+    document.getElementById("profilePic").src = pic;
+  } else {
+    document.getElementById("profilePic").src = "https://via.placeholder.com/100";
+  }
+
+  if(sub === "yes"){
+    document.getElementById("subscriptionStatus").textContent = "Premium User";
+  } else {
+    document.getElementById("subscriptionStatus").textContent = "Not Subscribed";
+  }
+
+  displayAddresses();
+  loadOrders();
+
+  document.getElementById("loginForm").style.display = "none";
+  document.getElementById("signupForm").style.display = "none";
+  document.getElementById("profileDetails").style.display = "block";
+}
+
+// Logout
+function logout(){
+  localStorage.removeItem("loggedInUser");
+  document.getElementById("profileDetails").style.display = "none";
+  document.getElementById("loginForm").style.display = "block";
+  document.getElementById("loginEmail").value = "";
+  document.getElementById("loginPassword").value = "";
+}
+
+// Upload Profile Picture
+function uploadImage(event){
+  const file = event.target.files[0];
+  const reader = new FileReader();
+  reader.onload = function(){
+    const imageData = reader.result;
+    localStorage.setItem("profilePic", imageData);
+    document.getElementById("profilePic").src = imageData;
+  };
+  reader.readAsDataURL(file);
+}
+
+// Remove Profile Picture
+function removeProfilePic(){
+  localStorage.removeItem("profilePic");
+  document.getElementById("profilePic").src = "https://via.placeholder.com/100";
+}
+
+// Add Address
+function addAddress(){
+  const address = document.getElementById("addressInput").value;
+  if(address === "") return;
+  let addresses = JSON.parse(localStorage.getItem("addresses")) || [];
+  addresses.push(address);
+  localStorage.setItem("addresses", JSON.stringify(addresses));
+  displayAddresses();
+  document.getElementById("addressInput").value = "";
+}
+
+// Display Addresses
+
+
+function displayAddresses(){
+  let addresses = JSON.parse(localStorage.getItem("addresses")) || [];
+  const list = document.getElementById("addressList");
+  list.innerHTML = "";
+  addresses.forEach((addr, index) => {
+    let li = document.createElement("li");
+    li.innerHTML = `
+      ${addr} 
+      <button onclick="editAddress(${index})">Edit</button>
+      <button onclick="removeAddress(${index})">Remove</button>
+    `;
+    list.appendChild(li);
+  });
+}
+
+
+function editAddress(index){
+  let addresses = JSON.parse(localStorage.getItem("addresses")) || [];
+  const newAddr = prompt("Edit address:", addresses[index]);
+  if(newAddr && newAddr.trim() !== ""){
+    addresses[index] = newAddr.trim();
+    localStorage.setItem("addresses", JSON.stringify(addresses));
+    displayAddresses();
+  }
+}
+
+function removeAddress(index){
+  let addresses = JSON.parse(localStorage.getItem("addresses")) || [];
+  addresses.splice(index, 1); // remove selected
+  localStorage.setItem("addresses", JSON.stringify(addresses));
+  displayAddresses();
+}
+
+// Load Orders with real-time count
+function loadOrders(){
+  let orders = JSON.parse(localStorage.getItem("orders")) || [];
+  const list = document.getElementById("ordersList");
+  const countSpan = document.getElementById("orderCount");
+  list.innerHTML = "";
+
+  if(orders.length === 0){
+    list.innerHTML = "<li>No orders yet</li>";
+    countSpan.textContent = 0;
+  } else {
+    orders.forEach(order => {
+      let li = document.createElement("li");
+      li.textContent = order;
+      list.appendChild(li);
+    });
+    countSpan.textContent = orders.length;
+  }
+}
+
+// Subscribe
+function subscribe(){
+  localStorage.setItem("subscribed", "yes");
+  document.getElementById("subscriptionStatus").textContent = "Premium User";
+}
+
+// Sidebar section switching
+function showSection(sectionId){
+  const sections = document.querySelectorAll(".section");
+  sections.forEach(sec => { sec.style.display = "none"; });
+  document.getElementById(sectionId).style.display = "block";
+}
+
+// Auto-check login status
+window.addEventListener("DOMContentLoaded", function () {
+  const loggedInEmail = localStorage.getItem("loggedInUser");
+  if (loggedInEmail) {
+    showProfile();
+  }
+});
+function unsubscribe(){
+  localStorage.removeItem("subscribed");
+  document.getElementById("subscriptionStatus").textContent = "Not Subscribed";
+}
+
+showSection('info'); // default section
+</script>
+</body>
+</html>
